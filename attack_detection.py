@@ -1,8 +1,15 @@
-from scapy.all import sniff, IP
-from attack_detection import analyze_traffic
+from collections import defaultdict
 
-def packet_callback(packet):
-    if IP in packet:
-        analyze_traffic(packet)
+request_count = defaultdict(int)
 
-sniff(filter="ip", prn=packet_callback, store=0)
+def analyze_traffic(packet):
+    ip_src = packet[IP].src
+
+    request_count[ip_src] += 1
+
+    if request_count[ip_src] > 100:
+        print(f"Potential DDoS attack detected from {ip_src}")
+
+        from mitigation import mitigate_attack
+        mitigate_attack(ip_src)
+
