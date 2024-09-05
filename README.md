@@ -14,7 +14,7 @@ This project is a custom Distributed Denial-of-Service (DDoS) Protection System 
 Open your web browser and navigate to http://127.0.0.1:5000 to view real-time alerts after starting your server
 **Clone the repository**:
    ```bash
-   git clone https://github.com/yourusername/ddos-protection-system.git
+   git clone https://github.com/ArnavKusurkar/ddos-protection-system.git
    cd ddos-protection-system
    python3 -m venv env
    source env/bin/activate
